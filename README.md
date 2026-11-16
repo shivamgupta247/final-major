@@ -261,4 +261,5 @@ A huge thank you to the sponsors who made this tutorial possible. Consider check
 - [CodeMirror](https://codemirror.net) - Code editor
 #   m i n o r 2 _ n e w  
  #   n e w - m a j o r - s e m - 7 t h - f i n a l -  
+ #   f i n a l - m a j o r  
  
