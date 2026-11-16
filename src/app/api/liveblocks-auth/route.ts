@@ -3,11 +3,21 @@ import { currentUser } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import randomColor from "randomcolor";
 
-const liveblocks = new Liveblocks({
-  secret: process.env.LIVEBLOCKS_SECRET_KEY as string,
-});
+export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
+  const secret = process.env.LIVEBLOCKS_SECRET_KEY;
+  if (!secret || !secret.startsWith("sk_")) {
+    return NextResponse.json(
+      { error: "LIVEBLOCKS_SECRET_KEY is not configured" },
+      { status: 500 }
+    );
+  }
+
+  const liveblocks = new Liveblocks({
+    secret,
+  });
+
   const user = await currentUser();
 
   if (!user) {
